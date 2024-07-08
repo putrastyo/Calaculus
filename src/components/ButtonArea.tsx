@@ -2,9 +2,39 @@ import { useCal } from "../hooks/useCal";
 import Button from "./Button";
 
 export const ButtonArea = () => {
-  const { setResult, calculate, handleReset, handleRemove } = useCal();
+  const { result, setResult, calculate, handleReset, handleRemove } = useCal();
 
   const handleClick = (val: string) => {
+    const operand = ["/", "*", "+", "-", "%"];
+
+    switch (val) {
+      case ".":
+        if (result.includes(".")) return;
+        if (result === "") val = "0.";
+        if (operand.includes(result.slice(-1))) return;
+        break;
+      case "0":
+      case "00":
+        if (
+          result === "" ||
+          result === "0" ||
+          operand.includes(result.slice(-1))
+        )
+          return;
+        break;
+      case "%":
+      case "/":
+      case "*":
+      case "+":
+      case "-":
+        if (result === "") return;
+        if (operand.includes(result.slice(-1))) {
+          return;
+        }
+        break;
+      default:
+        break;
+    }
     setResult((prev) => prev + val);
   };
 

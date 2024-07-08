@@ -17,8 +17,12 @@ export const CalProvider = ({ children }: { children: React.ReactNode }) => {
   const [result, setResult] = useState("");
 
   const calculate = () => {
-    setHistory(result);
-    setResult(evaluate(result));
+    try {
+      setHistory(result);
+      setResult(evaluate(result));
+    } catch (error) {
+      console.log("ERROR:", error);
+    }
   };
 
   const handleReset = () => {
