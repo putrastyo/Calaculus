@@ -28,7 +28,7 @@ const Button = (props: ButtonProps) => {
   return (
     <button
       type="button"
-      className={`p-4 text-2xl font-bold rounded text-white ${buttonTheme}`}
+      className={`p-4 text-2xl font-bold rounded text-white ${buttonTheme} hover:brightness-90 duration-100`}
       onClick={props.onClick}
     >
       {props.value}

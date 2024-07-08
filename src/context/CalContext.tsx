@@ -18,6 +18,7 @@ export const CalProvider = ({ children }: { children: React.ReactNode }) => {
 
   const calculate = () => {
     try {
+      if (result === "") return;
       setHistory(result);
       setResult(evaluate(result));
     } catch (error) {

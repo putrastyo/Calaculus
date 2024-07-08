@@ -3,7 +3,6 @@ import Button from "./Button";
 
 export const ButtonArea = () => {
   const { result, setResult, calculate, handleReset, handleRemove } = useCal();
-
   const handleClick = (val: string) => {
     const operand = ["/", "*", "+", "-", "%"];
 
@@ -28,7 +27,7 @@ export const ButtonArea = () => {
       case "+":
       case "-":
         if (result === "") return;
-        if (operand.includes(result.slice(-1))) {
+        if (operand.includes(result.toString().slice(-1))) {
           return;
         }
         break;
